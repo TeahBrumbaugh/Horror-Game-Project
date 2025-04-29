@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 [RequireComponent(typeof(Collider))]
@@ -8,48 +7,44 @@ public class Interactable3D : MonoBehaviour
     public GameObject uiPanel;
     public TMP_InputField inputField;
 
+    [Tooltip("Components to disable when UI is open")]
     public MonoBehaviour[] disableOnOpen;
-    public PlayerLook mouselook;
+    public LockCursor cameraLockController;
 
     public void Interact()
     {
         foreach (var mb in disableOnOpen)
-        {
             mb.enabled = false;
-        }
-            
-            
-        uiPanel.SetActive(true);
 
+        uiPanel.SetActive(true);
         inputField.text = "";
         inputField.ActivateInputField();
 
-        mouselook.UnlockCursor();
+        if (cameraLockController != null)
+            cameraLockController.SetCursorState(false);
     }
 
     public void OnSubmit()
     {
         string entered = inputField.text;
         Debug.Log($"User entered: {entered}");
+
+        // Hide UI
         uiPanel.SetActive(false);
-
-        foreach(var mb in disableOnOpen)
-        {
+        foreach (var mb in disableOnOpen)
             mb.enabled = true;
-        }
 
-        mouselook.LockCursor();
-    }   
+        // lock the cursor
+        if (cameraLockController != null)
+            cameraLockController.SetCursorState(true);
+    }
 
     public void CloseUI()
     {
         uiPanel.SetActive(false);
-
-        foreach(var mb in disableOnOpen)
-        {
+        foreach (var mb in disableOnOpen)
             mb.enabled = true;
-        }
-
-        mouselook.LockCursor();
+        if (cameraLockController != null)
+            cameraLockController.SetCursorState(true);
     }
 }
