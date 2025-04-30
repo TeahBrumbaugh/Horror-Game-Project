@@ -5,12 +5,12 @@ public class MenuManager : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(SceneNames.Level1);
     }
 
     public void SettingsButton()
     {
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene(SceneNames.Settings);
     }
 
     public void QuitButton()
