@@ -35,6 +35,7 @@ public class CalculatorPuzzle : MonoBehaviour
     private Operation currentOperation;
     private int currentAttempt = 0;
     private bool puzzleActive = true;
+    public JumpScare jumpscare;
 
     private void Start()
     {
@@ -151,6 +152,7 @@ public class CalculatorPuzzle : MonoBehaviour
                 currentAttempt++;
                 if (currentAttempt >= maxAttempts)
                 {
+                    jumpscare.TriggerJumpScare();
                     resultText.text = $"Game Over! Correct Answer: {correctAnswer}";
                     puzzleActive = false;
                     answerInput.interactable = false;
