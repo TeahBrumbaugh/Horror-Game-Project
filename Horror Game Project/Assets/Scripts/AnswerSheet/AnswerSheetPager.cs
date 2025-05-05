@@ -29,20 +29,18 @@ public class AnswerSheetPager : MonoBehaviour
         var inputPage = pages[currentPageIndex].GetComponent<AnswerSheetInputPageManager>();
         inputPage.SubmitAnswers();
 
-        if (!inputPage.IsCorrect1 || !inputPage.IsCorrect2)
-        {
-            // Convert current input page to display page
-            GameObject displayPage = Instantiate(displayPageTemplate, pageContainer);
-            var display = displayPage.GetComponent<AnswerSheetDisplayPage>();
-            display.SetAnswers(inputPage.Answer1, inputPage.Answer2, inputPage.IsCorrect1, inputPage.IsCorrect2);
+        // Always convert the current page to a display-only page
+        GameObject displayPage = Instantiate(displayPageTemplate, pageContainer);
+        var display = displayPage.GetComponent<AnswerSheetDisplayPage>();
+        display.SetAnswers(inputPage.Answer1, inputPage.Answer2, inputPage.IsCorrect1, inputPage.IsCorrect2);
 
-            // Hide current input page and replace with display page
-            inputPage.gameObject.SetActive(false);
-            pages[currentPageIndex] = displayPage;
+        // Replace current input page with read-only page
+        inputPage.gameObject.SetActive(false);
+        pages[currentPageIndex] = displayPage;
 
-            AddNewInputPage();
-        }
+        AddNewInputPage(); // Always add a fresh blank input page
     }
+
 
     private void AddNewInputPage()
     {

@@ -9,8 +9,8 @@ public class AnswerSheetDisplayPage : MonoBehaviour
 
     public void SetAnswers(string answer1, string answer2, bool isCorrect1, bool isCorrect2)
     {
-        puzzle1Text.text = $"Puzzle 1 Answer: {answer1}";
-        puzzle2Text.text = $"Puzzle 2 Answer: {answer2}";
-        feedbackText.text = $"Result: {(isCorrect1 ? "O" : "X")} | {(isCorrect2 ? "O" : "X")}";
+        puzzle1Text.text = $"Puzzle 1: {answer1}     {(isCorrect1 ? "O" : "X")}";
+        puzzle2Text.text = $"Puzzle 2: {answer2}     {(isCorrect2 ? "O" : "X")}";
     }
+
 }
