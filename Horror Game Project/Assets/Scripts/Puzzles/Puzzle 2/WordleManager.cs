@@ -17,10 +17,25 @@ public class WordleManager : MonoBehaviour
     private List<string> words = new List<string>();
     private string targetWord;
     private int currentAttempt = 0;
+    public GameObject jumpscareImage;
+    public float jumpscareDuration = 1.5f;
 
     private void UpdateAttemptText()
     {
         attemptText.text = $"Attempt {currentAttempt + 1} / {maxAttempts}";
+    }
+
+    private void TriggerJumpScare()
+    {
+        Debug.Log("hello");
+        StartCoroutine(ShowJumpscare());
+    }
+
+    private System.Collections.IEnumerator ShowJumpscare()
+    {
+        jumpscareImage.SetActive(true);
+        yield return new WaitForSeconds(jumpscareDuration);
+        jumpscareImage.SetActive(false);
     }
 
 
@@ -88,6 +103,7 @@ public class WordleManager : MonoBehaviour
         }
         else if (currentAttempt >= maxAttempts)
         {
+            TriggerJumpScare();
             messageText.text = $"Game Over! Word was {targetWord}";
             playerInput.interactable = false;
         }
