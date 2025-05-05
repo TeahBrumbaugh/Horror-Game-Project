@@ -1113,6 +1113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1200495473}
   - component: {fileID: 1200495472}
+  - component: {fileID: 1200495474}
   m_Layer: 0
   m_Name: WordleGame
   m_TagString: Untagged
@@ -1139,8 +1140,7 @@ MonoBehaviour:
   messageText: {fileID: 986593250}
   maxAttempts: 6
   attemptText: {fileID: 2082509213}
-  jumpscareImage: {fileID: 843824887}
-  jumpscareDuration: 1.5
+  jumpscare: {fileID: 1200495474}
 --- !u!4 &1200495473
 Transform:
   m_ObjectHideFlags: 0
@@ -1156,6 +1156,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1200495474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200495471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1a479b482824a21a9e5bb1cac76098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpscareImage: {fileID: 843824887}
+  jumpscareDuration: 1.5
 --- !u!1 &1293445019
 GameObject:
   m_ObjectHideFlags: 0
