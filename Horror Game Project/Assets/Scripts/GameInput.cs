@@ -22,4 +22,14 @@ public class GameInput : MonoBehaviour
         return inputVector;
     }
 
+    private void OnDisable()
+    {
+        playerInputActions.Player.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        playerInputActions.Dispose();
+    }
+
 }

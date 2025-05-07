@@ -7,7 +7,6 @@ public class JumpScare : MonoBehaviour
 
     public void TriggerJumpScare()
     {
-        Debug.Log("hello");
         StartCoroutine(ShowJumpscare());
     }
 

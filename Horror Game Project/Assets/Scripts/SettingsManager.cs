@@ -5,6 +5,6 @@ public class SettingsManager : MonoBehaviour
 {
     public void BackButton()
     {
-        SceneManager.LoadScene(SceneNames.Settings);
+        SceneManager.LoadScene(SceneNames.MainMenu);
     }
 }
