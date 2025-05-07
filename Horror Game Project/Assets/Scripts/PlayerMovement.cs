@@ -15,10 +15,7 @@ using System.Collections;
  
      private void Start() {
          _rb = transform.GetChild(0).GetComponent<Rigidbody>();
-         if (_rb != null) {
-             Debug.Log("Found Rigidbody on child!");
-         }
-         else {
+         if (_rb == null) {
              Debug.Log("No Rigidbody found on child!");
          }
      }
