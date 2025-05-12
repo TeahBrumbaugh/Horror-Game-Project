@@ -1,12 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager Instance { get; private set; }
-    [Tooltip("The PuzzleContainer")]
     public Transform puzzleContainer;
 
+    // Keep one dictionary of prefab→instance
+    Dictionary<GameObject, GameObject> _instances = new Dictionary<GameObject, GameObject>();
     GameObject _currentPuzzle;
+    GameObject _currentPrefab;
 
     void Awake()
     {
@@ -18,38 +21,54 @@ public class PuzzleManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // Spawns the UI prefab under puzzleContainer, disables the listed MonoBehaviours, and unlocks the cursor.
     public void OpenPuzzle(GameObject prefab, MonoBehaviour[] disableOnOpen, LockCursor lockCursor)
     {
-        foreach (var mb in disableOnOpen) mb.enabled = false;
+        // disable player/input
+        if (disableOnOpen!=null)
+            foreach (var mb in disableOnOpen) mb.enabled = false;
         if (lockCursor != null) lockCursor.SetCursorState(false);
 
-        _currentPuzzle = Instantiate(prefab, puzzleContainer);
-        var puzzle = _currentPuzzle.GetComponent<PuzzleBase>();
-        puzzle.Show();
+        // hide whatever was up before
+        if (_currentPuzzle != null)
+            _currentPuzzle.SetActive(false);
+
+        // get or create this puzzle’s instance
+        if (!_instances.TryGetValue(prefab, out var instance))
+        {
+            instance = Instantiate(prefab, puzzleContainer);
+            _instances[prefab] = instance;
+            var puzzle = instance.GetComponent<PuzzleBase>();
+            if (puzzle == null)
+            {
+                Debug.LogError($"Prefab {prefab.name} has no PuzzleBase!");
+            }
+            else puzzle.Show();
+        }
+
+        // show it
+        instance.SetActive(true);
+        _currentPuzzle = instance;
+        _currentPrefab = prefab;
     }
-
-
-    // Destroys the current panel, re-enables all disabled scripts, and locks cursor.
 
     public void CloseCurrentPuzzle()
     {
-        if (_currentPuzzle != null) Destroy(_currentPuzzle);
+        if (_currentPuzzle != null)
+            _currentPuzzle.SetActive(false);
 
-        // Re-enable everything
+        // re-enable player/input
         var all = FindObjectsByType<Interactable3D>(FindObjectsSortMode.None);
-
         foreach (var interact in all)
-            foreach (var mb in interact.disableOnOpen)
-                mb.enabled = true;
+            if (interact.disableOnOpen != null)
+                foreach (var mb in interact.disableOnOpen)
+                    mb.enabled = true;
+
         if (all.Length > 0 && all[0].cameraLockController != null)
             all[0].cameraLockController.SetCursorState(true);
+
+        _currentPuzzle = null;
+        _currentPrefab = null;
     }
 
-    public bool IsPuzzleOpen()
-    {
-        return _currentPuzzle != null;
-    }
-
+    public bool IsPuzzleOpen() => _currentPuzzle != null && _currentPuzzle.activeSelf;
 }
-

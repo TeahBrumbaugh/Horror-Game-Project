@@ -996,6 +996,7 @@ MonoBehaviour:
   questionText: {fileID: 3747510597071609466}
   resultText: {fileID: 6752834704297049921}
   attemptText: {fileID: 9216458099588614901}
+  answerSheet: {fileID: 0}
   selectedDifficulty: 1
   maxAttempts: 3
   jumpscare: {fileID: 402001567212024245}
