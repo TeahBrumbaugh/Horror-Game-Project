@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class CalculatorPuzzle : MonoBehaviour
+public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
 {
     public enum Difficulty
     {
@@ -23,6 +23,7 @@ public class CalculatorPuzzle : MonoBehaviour
     [SerializeField] private TMP_Text questionText;
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private TMP_Text attemptText;
+    [SerializeField] private AnswerSheetUI answerSheet;
 
     [Header("Puzzle Settings")]
     [SerializeField] private Difficulty selectedDifficulty = Difficulty.Easy;
@@ -36,11 +37,18 @@ public class CalculatorPuzzle : MonoBehaviour
     private int currentAttempt = 0;
     private bool puzzleActive = true;
     public JumpScare jumpscare;
+    private static bool initialized = false;
 
     private void Start()
     {
-        GenerateNewProblem();
+        DontDestroyOnLoad(gameObject);
+        if (!initialized)
+        {
+            GenerateNewProblem();
+            initialized = true;
+        }
     }
+
 
     private void GenerateNewProblem()
     {
@@ -50,7 +58,7 @@ public class CalculatorPuzzle : MonoBehaviour
             case Difficulty.Easy:
                 A = Random.Range(0, 10);
                 B = Random.Range(0, 10);
-                modulus = Random.Range(1, 5);;
+                modulus = Random.Range(1, 5); ;
                 currentOperation = (Random.value < 0.5f) ? Operation.Add : Operation.Subtract;
                 break;
 
@@ -173,4 +181,21 @@ public class CalculatorPuzzle : MonoBehaviour
         answerInput.text = "";
         answerInput.ActivateInputField();
     }
+
+    public void OnCalculatorSubmit()
+    {
+        string result = answerInput.text.Trim();
+
+        if (!string.IsNullOrEmpty(result))
+        {
+            answerSheet.SetAnswer(result);
+            answerInput.text = "";  // Optional: clear after submit
+        }
+    }
+
+    public string GetCorrectAnswer()
+    {
+        return correctAnswer.ToString(); // convert int to string
+    }
+
 }
