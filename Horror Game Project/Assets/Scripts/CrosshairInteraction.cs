@@ -66,9 +66,15 @@ public class CrosshairInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
         {
+            var puzzle =hit.collider.GetComponent<PuzzleInteractable>();
             var interactable = hit.collider.GetComponent<Interactable3D>();
             if (interactable != null)
                 interactable.Interact();
+            if(puzzle != null)
+            {
+                puzzle.Interact();
+                return;
+            }
         }
     }
 }
