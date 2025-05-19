@@ -18,6 +18,7 @@ public class WordleManager : MonoBehaviour
     private string targetWord;
     private int currentAttempt = 0;
     public JumpScare jumpscare;
+    private static bool initialized = false;
 
     private void UpdateAttemptText()
     {
@@ -27,12 +28,16 @@ public class WordleManager : MonoBehaviour
 
     private void Start()
     {
-        LoadWords();
-        StartNewGame();
-    
+        DontDestroyOnLoad(gameObject);
+        if (!initialized)
+        {
+            LoadWords();
+            StartNewGame();
+            initialized = true;
+
+        }
+
     }
-
-
     private void LoadWords()
     {
         words = new List<string>();

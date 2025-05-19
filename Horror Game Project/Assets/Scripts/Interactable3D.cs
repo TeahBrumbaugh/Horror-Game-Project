@@ -6,10 +6,18 @@ public class Interactable3D : MonoBehaviour
 {
     public GameObject uiPanel;
     public TMP_InputField inputField;
+    private AnswerSheetToggle answerSheetToggle;
+
 
     [Tooltip("Components to disable when UI is open")]
     public MonoBehaviour[] disableOnOpen;
     public LockCursor cameraLockController;
+
+
+    private void Start()
+    {
+        answerSheetToggle = FindObjectOfType<AnswerSheetToggle>();
+    }
 
     public void Interact()
     {
@@ -22,6 +30,8 @@ public class Interactable3D : MonoBehaviour
 
         if (cameraLockController != null)
             cameraLockController.SetCursorState(false);
+        if (answerSheetToggle != null)
+            answerSheetToggle.SetInPuzzle(true);
     }
 
     public void OnSubmit()
@@ -37,6 +47,8 @@ public class Interactable3D : MonoBehaviour
         // lock the cursor
         if (cameraLockController != null)
             cameraLockController.SetCursorState(true);
+        if (answerSheetToggle != null)
+            answerSheetToggle.SetInPuzzle(false);
     }
 
     public void CloseUI()
@@ -46,5 +58,7 @@ public class Interactable3D : MonoBehaviour
             mb.enabled = true;
         if (cameraLockController != null)
             cameraLockController.SetCursorState(true);
+        if (answerSheetToggle != null)
+            answerSheetToggle.SetInPuzzle(false);
     }
 }
