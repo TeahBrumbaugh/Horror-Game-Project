@@ -6,7 +6,7 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager Instance { get; private set; }
     public Transform puzzleContainer;
 
-    // Keep one dictionary of prefab→instance
+    // Keep one dictionary of prefab -> instance
     Dictionary<GameObject, GameObject> _instances = new Dictionary<GameObject, GameObject>();
     GameObject _currentPuzzle;
     GameObject _currentPrefab;
