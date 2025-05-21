@@ -34,12 +34,12 @@
                 },
                 {
                     "name": "Interact",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Crouch",
@@ -85,15 +85,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "LockToggle",
-                    "type": "Button",
-                    "id": "33568ad4-1a4e-4192-93fa-64dba69ebca4",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -441,7 +432,7 @@
                 {
                     "name": "",
                     "id": "1c04ea5f-b012-41d1-a6f7-02e963b52893",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -479,17 +470,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fd4565e8-0a23-43bc-8489-d14f1a471d95",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "LockToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
