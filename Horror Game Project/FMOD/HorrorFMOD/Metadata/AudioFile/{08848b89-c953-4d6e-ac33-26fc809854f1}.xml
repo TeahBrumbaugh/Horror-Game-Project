@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{08848b89-c953-4d6e-ac33-26fc809854f1}">
+		<property name="assetPath">
+			<value>534018__lookimadeathing__sci-fi-ambient-drone.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>165</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{51b163da-2586-418a-90dc-4969d8fd8856}</destination>
+		</relationship>
+	</object>
+</objects>
