@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using Microsoft.Unity.VisualStudio.Editor;
 
 [RequireComponent(typeof(PlayerInput))]
 public class LockCursor : MonoBehaviour
@@ -8,6 +9,7 @@ public class LockCursor : MonoBehaviour
     public string lockToggleActionName = "LockToggle";
 
     public CinemachineInputAxisController inputAxisController;
+    public PauseMenu pauseMenu;
     private InputAction _lockToggleAction;
     private bool _cursorLocked = true;
 
@@ -37,13 +39,17 @@ public class LockCursor : MonoBehaviour
             PuzzleManager.Instance.CloseCurrentPuzzle();
             return;
         }
-    
-        SetCursorState(!_cursorLocked);
+
+        if (_cursorLocked == true)
+        {
+            SetCursorState(!_cursorLocked);
+            pauseMenu.Pause();
+        }
+        
     }
 
     public void SetCursorState(bool locked)
     {
-        _cursorLocked = locked;
         Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !locked;
         if (inputAxisController != null)
