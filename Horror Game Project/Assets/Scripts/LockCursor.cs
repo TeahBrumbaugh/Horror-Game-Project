@@ -34,11 +34,11 @@ public class LockCursor : MonoBehaviour
 
     private void OnLockToggle(InputAction.CallbackContext ctx)
     {
-        if (PuzzleManager.Instance != null && PuzzleManager.Instance.IsPuzzleOpen())
-        {
-            PuzzleManager.Instance.CloseCurrentPuzzle();
-            return;
-        }
+        //if (PuzzleManager.Instance != null && PuzzleManager.Instance.IsPuzzleOpen())
+        //{
+        //    PuzzleManager.Instance.CloseCurrentPuzzle();
+        //    return;
+        //}
 
         if (_cursorLocked == true)
         {
