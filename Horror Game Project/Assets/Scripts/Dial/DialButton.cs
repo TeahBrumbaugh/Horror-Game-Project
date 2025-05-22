@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DialButton : MonoBehaviour
 {
-    public enum ButtonType { RotateCW, RotateCCW, SelectInner, SelectOuter }
+    public enum ButtonType { RotateCW, RotateCCW, SelectInner, SelectOuter, Reset }
     public ButtonType buttonType;
     public DialController3D dialController;
 
@@ -22,6 +22,9 @@ public class DialButton : MonoBehaviour
                 break;
             case ButtonType.SelectOuter:
                 dialController.SelectOuter(transform);
+                break;
+            case ButtonType.Reset:
+                dialController.ResetDial(transform);
                 break;
         }
     }
