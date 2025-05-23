@@ -691,7 +691,7 @@ MonoBehaviour:
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
-  totalTime: 245
+  totalTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &402821403
@@ -832,7 +832,7 @@ MonoBehaviour:
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
-  totalTime: 245
+  totalTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &517264618
@@ -2034,7 +2034,7 @@ MonoBehaviour:
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
-  totalTime: 245
+  totalTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &934991508
@@ -2571,7 +2571,7 @@ MonoBehaviour:
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
-  totalTime: 245
+  totalTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1055569369
@@ -4328,7 +4328,7 @@ MonoBehaviour:
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
-  totalTime: 245
+  totalTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1910691731
@@ -4495,7 +4495,7 @@ MonoBehaviour:
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
-  totalTime: 245
+  totalTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1994053783
@@ -4757,7 +4757,7 @@ MonoBehaviour:
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
-  totalTime: 245
+  totalTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &2037243645
