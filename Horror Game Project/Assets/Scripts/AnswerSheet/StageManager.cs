@@ -41,7 +41,7 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private IEnumerator JumpScareAndRestart()
+    public IEnumerator JumpScareAndRestart()
     {
 
         jumpScarePanel.SetActive(true);

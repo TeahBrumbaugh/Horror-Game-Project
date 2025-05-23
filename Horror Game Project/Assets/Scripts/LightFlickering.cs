@@ -4,6 +4,7 @@ using UnityEngine;
 public class LightFlickering : MonoBehaviour
 {
     private Light lightToFlicker;
+    [SerializeField] private StageManager stageManager;
     [SerializeField, Range(1f, 15f)] private float minIntensity = 15f;
     [SerializeField, Range(1f, 15f)] private float maxIntensity = 15f;
     [SerializeField, Min(0f)] private float timeBetweenIntensity = 100f;
@@ -32,6 +33,7 @@ public class LightFlickering : MonoBehaviour
         {
             timer -= Time.deltaTime;
             //Debug.Log(timer);
+            //Debug.Log($"Timer: {timer:F2}, DeltaTime: {Time.deltaTime:F4}, Time.time: {Time.time:F2}");
 
 
             if (timer <= 240f && timer > 239)//small flicker at 4 mins
@@ -69,12 +71,20 @@ public class LightFlickering : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            StartCoroutine(stageManager.JumpScareAndRestart());
+        }
+
         flickerTimer += Time.deltaTime;
+
         if (flickerTimer >= timeBetweenIntensity)
         {
             lightToFlicker.intensity = Random.Range(minIntensity, maxIntensity);
             flickerTimer = 0f;
         }
+
+        
     }
 
     private void ValidateIntensityBounds()
