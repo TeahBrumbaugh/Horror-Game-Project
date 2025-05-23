@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider))]
 public class Interactable3D : MonoBehaviour
@@ -17,6 +18,9 @@ public class Interactable3D : MonoBehaviour
     private void Start()
     {
         answerSheetToggle = FindObjectOfType<AnswerSheetToggle>();
+        Scene activeScene = SceneManager.GetActiveScene();
+        string sceneName = activeScene.name;
+        Debug.Log($"Active Scene is {sceneName}");
     }
 
     public void Interact()
@@ -43,7 +47,7 @@ public class Interactable3D : MonoBehaviour
         uiPanel.SetActive(false);
         foreach (var mb in disableOnOpen)
             mb.enabled = true;
-
+    
         // lock the cursor
         if (cameraLockController != null)
             cameraLockController.SetCursorState(true);

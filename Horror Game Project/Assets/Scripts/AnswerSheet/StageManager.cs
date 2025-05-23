@@ -4,27 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] private string[] stageSceneNames;  // Fill this in the Inspector
+    [SerializeField] private string stageSceneName;  // Fill this in the Inspector
     [SerializeField] private GameObject jumpScarePanel;
     private int currentStage = 0;
     private int attemptCount = 0;
-    private const int maxAttempts = 3;
+    [SerializeField] private int maxAttempts = 3;
 
     public void GoToNextStage()
     {
-        Debug.Log($"Correct! Advancing to stage {currentStage + 1}.");
+        Debug.Log($"Correct!.");
 
-        currentStage++;
         attemptCount = 0;
 
-        if (currentStage < stageSceneNames.Length)
+        if (stageSceneName != "WIN")
         {
-            SceneManager.LoadScene(stageSceneNames[currentStage]);
+            SceneManager.LoadScene(stageSceneName);
         }
         else
         {
             Debug.Log("All stages complete!");
-            // Optionally load a win screen or loop
+            SceneManager.LoadScene("WIN");
         }
     }
 
