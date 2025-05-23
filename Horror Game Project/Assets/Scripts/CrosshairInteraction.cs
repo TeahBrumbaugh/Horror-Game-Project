@@ -72,11 +72,13 @@ public class CrosshairInteraction : MonoBehaviour
                 dialButton.OnPress();
                 return;
             }
-            
+            var hint = hit.collider.GetComponent<HintInteractables>();
             var puzzle =hit.collider.GetComponent<PuzzleInteractable>();
             var interactable = hit.collider.GetComponent<Interactable3D>();
             if (interactable != null)
                 interactable.Interact();
+            if (hint != null)
+                hint.Interact();
             if(puzzle != null)
             {
                 puzzle.Interact();

@@ -95,4 +95,28 @@ public class DialController3D : MonoBehaviour
         yield return new WaitForSeconds(buttonPressDuration);
         button.localPosition = orig;
     }
+
+    public void ResetDial(Transform button)
+    {
+        if (isRotating) return;
+        StartCoroutine(PressAndReset(button));
+    }
+
+    private IEnumerator PressAndReset(Transform button)
+    {
+        isRotating = true;
+        Debug.Log("Dial Reset");
+        yield return PressButton(button);
+
+        _innerIndex = 0;
+        _outerIndex = 0;
+
+        _selectedRing = innerRingTransform;
+
+        innerRingTransform.localRotation = Quaternion.identity;
+        outerRingTransform.localRotation = Quaternion.identity;
+
+        Debug.Log("Dial Reset successful");
+        isRotating = false;
+    }
 }
