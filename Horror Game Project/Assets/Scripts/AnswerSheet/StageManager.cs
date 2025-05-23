@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] private string[] stageSceneNames;  // List of scene names for each puzzle stage
+    [SerializeField] private string[] stageSceneNames;  // Fill this in the Inspector
     private int currentStage = 0;
     private int attemptCount = 0;
     private const int maxAttempts = 3;
@@ -21,7 +21,7 @@ public class StageManager : MonoBehaviour
         }
         else
         {
-            Debug.Log(" All stages complete!");
+            Debug.Log("All stages complete!");
             // Optionally load a win screen or loop
         }
     }
@@ -29,39 +29,22 @@ public class StageManager : MonoBehaviour
     public void FailAttempt()
     {
         attemptCount++;
-        Debug.Log($" Incorrect. Attempt {attemptCount}/{maxAttempts}");
+        Debug.Log($"Incorrect. Attempt {attemptCount}/{maxAttempts}");
 
         if (attemptCount >= maxAttempts)
         {
-            Debug.Log(" Too many failed attempts. Restarting from Stage 1.");
+            Debug.Log("Too many failed attempts. Restarting from Puzzle 1.");
             currentStage = 0;
             attemptCount = 0;
-
-            SceneManager.LoadScene(stageSceneNames[0]); // Reload Stage 1
+            SceneManager.LoadScene(stageSceneNames[0]);
         }
         else
         {
-            Debug.Log(" Resetting current puzzle...");
-            ResetCurrentPuzzle();  // Reset puzzle without reloading scene
+            // Optionally show retry feedback
         }
     }
 
-    private void ResetCurrentPuzzle()
-    {
-        // Try to find a puzzle in the current scene that implements ResetPuzzle()
-        var puzzle = FindObjectOfType<MonoBehaviour>() as IPuzzleResettable;
-
-        if (puzzle != null)
-        {
-            puzzle.ResetPuzzle();
-        }
-        else
-        {
-            Debug.LogWarning(" No puzzle found that implements IPuzzleResettable. Consider reloading the scene.");
-        }
-    }
-
-    // Optional: Accessors for external scripts
+    // Optional accessors
     public int GetStage() => currentStage;
     public int GetAttemptCount() => attemptCount;
 }

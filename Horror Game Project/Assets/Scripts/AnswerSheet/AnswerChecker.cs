@@ -47,11 +47,6 @@ public class AnswerChecker : MonoBehaviour
         else
         {
             Debug.Log("Incorrect.");
-            if (puzzleScript is WordleManager wordle)
-            {
-                wordle.UpdateCurrentRow(submitted); 
-            }
-
             stageManager.FailAttempt();
         }
 

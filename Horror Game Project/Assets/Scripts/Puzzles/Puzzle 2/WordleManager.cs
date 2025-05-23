@@ -1,168 +1,131 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+using TMPro; // if using TextMeshPro
 
-public class WordleManager: MonoBehaviour, IAnswerProvider, IPuzzleResettable
+public class WordleManager : MonoBehaviour
 {
-    [Header("UI References")]
+    [Header("Game Settings")]
+    [SerializeField] private TextAsset wordListText;
+    [SerializeField] private GameObject letterTilePrefab;
+    [SerializeField] private Transform boardParent;
     [SerializeField] private TMP_InputField playerInput;
     [SerializeField] private TMP_Text messageText;
-    [SerializeField] private TMP_Text attemptText;
-    [SerializeField] private Transform boardParent;
-    [SerializeField] private GameObject letterTilePrefab;
-
-    [Header("Puzzle Settings")]
-    [SerializeField] private TextAsset wordListText;
     [SerializeField] private int maxAttempts = 6;
-    [SerializeField] private int wordLength = 5;
-    public JumpScare jumpscare;
+    [SerializeField] private TMP_Text attemptText;
+
 
     private List<string> words = new List<string>();
-    private List<GameObject> currentTiles = new List<GameObject>();
-
     private string targetWord;
     private int currentAttempt = 0;
-    private bool puzzleActive = true;
-
-    private void Start()
-    {
-        LoadWords();
-        GenerateNewPuzzle();
-    }
-
-    private void LoadWords()
-    {
-        words.Clear();
-        string[] lines = wordListText.text.Split('\n');
-
-        foreach (string line in lines)
-        {
-            string word = line.Trim().ToUpper();
-            if (word.Length == wordLength)
-            {
-                words.Add(word);
-            }
-        }
-
-        if (words.Count == 0)
-            Debug.LogError("No valid words found in word list!");
-    }
-
-    private void GenerateNewPuzzle()
-    {
-        ClearBoard();
-        currentAttempt = 0;
-        puzzleActive = true;
-        playerInput.interactable = true;
-        UpdateAttemptText();
-
-        targetWord = words[Random.Range(0, words.Count)];
-        Debug.Log($"[WordlePuzzle] Target word: {targetWord}");
-
-        messageText.text = "Make a Guess";
-        CreateEmptyRow();
-
-        playerInput.text = "";
-        playerInput.ActivateInputField();
-    }
+    public JumpScare jumpscare;
+    private static bool initialized = false;
 
     private void UpdateAttemptText()
     {
         attemptText.text = $"Attempt {currentAttempt + 1} / {maxAttempts}";
     }
 
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        if (!initialized)
+        {
+            LoadWords();
+            StartNewGame();
+            initialized = true;
+
+        }
+
+    }
+    private void LoadWords()
+    {
+        words = new List<string>();
+
+        string[] lines = wordListText.text.Split('\n');
+        foreach (string line in lines)
+        {
+            string word = line.Trim().ToUpper();
+            if (word.Length == 5)
+            {
+                words.Add(word);
+                Debug.Log("Loaded word: " + word);
+            }
+            else
+            {
+                Debug.LogWarning("Skipped word: " + word);
+            }
+        }
+    }
+
+
+    private void StartNewGame()
+    {
+        currentAttempt = 0;
+        UpdateAttemptText();
+        targetWord = words[Random.Range(0, words.Count)];
+        Debug.Log("Target Word: " + targetWord);
+        currentAttempt = 0;
+        messageText.text = "Make a Guess";
+    }
+
     public void SubmitGuess()
     {
-        if (!puzzleActive) return;
-
         string guess = playerInput.text.Trim().ToUpper();
-
-        if (guess.Length != wordLength)
+        if (guess.Length != 5)
         {
-            messageText.text = $"Guess must be {wordLength} letters!";
+            messageText.text = "Guess must be 5 letters!";
             return;
         }
 
         if (!words.Contains(guess))
         {
             messageText.text = "Not a valid word!";
-            return;
         }
 
-        UpdateCurrentRow(guess);
+        CreateRow(guess);
         currentAttempt++;
-        UpdateAttemptText();
+        UpdateAttemptText();  // << THIS must be here!!
 
         if (guess == targetWord)
         {
             messageText.text = "You Win!";
-            puzzleActive = false;
             playerInput.interactable = false;
         }
         else if (currentAttempt >= maxAttempts)
         {
-            jumpscare?.TriggerJumpScare();
+            jumpscare.TriggerJumpScare();
             messageText.text = $"Game Over! Word was {targetWord}";
-            puzzleActive = false;
             playerInput.interactable = false;
         }
 
         playerInput.text = "";
-        playerInput.ActivateInputField();
     }
 
-    private void CreateEmptyRow()
-    {
-        currentTiles.Clear();
 
-        for (int i = 0; i < wordLength; i++)
+    private void CreateRow(string guess)
+    {
+        Debug.Log($"Creating Row for Guess: {guess}");
+
+        for (int i = 0; i < guess.Length; i++)
         {
             GameObject tile = Instantiate(letterTilePrefab, boardParent);
             TMP_Text tileText = tile.GetComponentInChildren<TMP_Text>();
-            tileText.text = "";
-            tile.GetComponent<UnityEngine.UI.Image>().color = Color.gray;
-
-            currentTiles.Add(tile);
-        }
-    }
-
-    public void UpdateCurrentRow(string guess)
-    {
-        Debug.Log($"[WordleManager] Updating tiles for guess: {guess}");
-
-        for (int i = 0; i < wordLength; i++)
-        {
-            GameObject tile = currentTiles[i];
-            TMP_Text tileText = tile.GetComponentInChildren<TMP_Text>();
             tileText.text = guess[i].ToString();
 
-            var img = tile.GetComponent<Image>();
             if (guess[i] == targetWord[i])
-                img.color = Color.green;
+            {
+                tile.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+            }
             else if (targetWord.Contains(guess[i].ToString()))
-                img.color = Color.yellow;
+            {
+                tile.GetComponent<UnityEngine.UI.Image>().color = Color.yellow;
+            }
             else
-                img.color = Color.gray;
+            {
+                tile.GetComponent<UnityEngine.UI.Image>().color = Color.gray;
+            }
         }
     }
 
-    private void ClearBoard()
-    {
-        foreach (Transform child in boardParent)
-        {
-            Destroy(child.gameObject);
-        }
-        currentTiles.Clear();
-    }
-
-    //  IPuzzleResettable Implementation
-    public void ResetPuzzle()
-    {
-        GenerateNewPuzzle();
-    }
-
-    //  IAnswerProvider Implementation
-    public string GetCorrectAnswer() => targetWord;
-    public int GetMaxAttempts() => maxAttempts;
 }
