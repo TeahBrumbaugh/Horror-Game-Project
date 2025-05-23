@@ -1,74 +1,47 @@
 using UnityEngine;
 using TMPro;
 
-public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
+public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider, IPuzzleResettable
 {
-    public enum Difficulty
-    {
-        Easy,
-        Medium,
-        Hard
-    }
-
-    public enum Operation
-    {
-        Add,
-        Subtract,
-        Multiply,
-        Divide
-    }
+    public enum Difficulty { Easy, Medium, Hard }
+    public enum Operation { Add, Subtract, Multiply, Divide }
 
     [Header("UI References")]
     [SerializeField] private TMP_InputField answerInput;
     [SerializeField] private TMP_Text questionText;
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private TMP_Text attemptText;
-    [SerializeField] private AnswerSheetUI answerSheet;
 
     [Header("Puzzle Settings")]
     [SerializeField] private Difficulty selectedDifficulty = Difficulty.Easy;
     [SerializeField] private int maxAttempts = 3;
-
-    private int A;
-    private int B;
-    private int modulus;
-    private int correctAnswer;
-    private Operation currentOperation;
-    private int currentAttempt = 0;
-    private bool puzzleActive = true;
     public JumpScare jumpscare;
-    private static bool initialized = false;
+
+    private int A, B, modulus, correctAnswer, currentAttempt = 0;
+    private Operation currentOperation;
+    private bool puzzleActive = true;
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        if (!initialized)
-        {
-            GenerateNewProblem();
-            initialized = true;
-        }
+        GenerateNewProblem();
     }
-
 
     private void GenerateNewProblem()
     {
-        // Set difficulty ranges
         switch (selectedDifficulty)
         {
             case Difficulty.Easy:
                 A = Random.Range(0, 10);
                 B = Random.Range(0, 10);
-                modulus = Random.Range(1, 5); ;
-                currentOperation = (Random.value < 0.5f) ? Operation.Add : Operation.Subtract;
+                modulus = Random.Range(1, 5);
+                currentOperation = Random.value < 0.5f ? Operation.Add : Operation.Subtract;
                 break;
-
             case Difficulty.Medium:
                 A = Random.Range(10, 50);
                 B = Random.Range(10, 50);
                 modulus = Random.Range(5, 10);
-                currentOperation = (Operation)Random.Range(0, 4); // 0=Add, 1=Subtract, 2=Multiply, 3=Divide
+                currentOperation = (Operation)Random.Range(0, 4);
                 break;
-
             case Difficulty.Hard:
                 A = Random.Range(50, 200);
                 B = Random.Range(50, 200);
@@ -77,14 +50,9 @@ public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
                 break;
         }
 
-        // Fix numbers for positive answers
         FixForPositiveAnswers();
+        correctAnswer = CalculateOperation(A, B) % modulus;
 
-        // Calculate correct answer
-        int rawResult = CalculateOperation(A, B);
-        correctAnswer = rawResult % modulus;
-
-        // Update UI
         questionText.text = $"What is ({A} {GetOperatorSymbol(currentOperation)} {B}) mod {modulus}?";
         resultText.text = "";
         currentAttempt = 0;
@@ -97,50 +65,37 @@ public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
 
     private int CalculateOperation(int a, int b)
     {
-        switch (currentOperation)
+        return currentOperation switch
         {
-            case Operation.Add: return a + b;
-            case Operation.Subtract: return a - b;
-            case Operation.Multiply: return a * b;
-            case Operation.Divide: return a / b;
-            default: return 0;
-        }
+            Operation.Add => a + b,
+            Operation.Subtract => a - b,
+            Operation.Multiply => a * b,
+            Operation.Divide => b != 0 ? a / b : 0,
+            _ => 0,
+        };
     }
 
     private void FixForPositiveAnswers()
     {
-        if (currentOperation == Operation.Subtract)
+        if (currentOperation == Operation.Subtract && B > A)
         {
-            // Ensure a >= b
-            if (B > A)
-            {
-                int temp = A;
-                A = B;
-                B = temp;
-            }
+            (A, B) = (B, A);
         }
         else if (currentOperation == Operation.Divide)
         {
-            // Ensure clean division
-            // Pick B first to avoid division by zero
-            B = Random.Range(1, (selectedDifficulty == Difficulty.Hard) ? 20 : 10);
-
-            int tempMultiplier = Random.Range(1, (selectedDifficulty == Difficulty.Hard) ? 10 : 5);
-            A = B * tempMultiplier;
+            B = Random.Range(1, selectedDifficulty == Difficulty.Hard ? 20 : 10);
+            A = B * Random.Range(1, selectedDifficulty == Difficulty.Hard ? 10 : 5);
         }
     }
 
-    private string GetOperatorSymbol(Operation op)
+    private string GetOperatorSymbol(Operation op) => op switch
     {
-        switch (op)
-        {
-            case Operation.Add: return "+";
-            case Operation.Subtract: return "-";
-            case Operation.Multiply: return "x";
-            case Operation.Divide: return "÷";
-            default: return "?";
-        }
-    }
+        Operation.Add => "+",
+        Operation.Subtract => "-",
+        Operation.Multiply => "x",
+        Operation.Divide => "÷",
+        _ => "?"
+    };
 
     public void SubmitAnswer()
     {
@@ -153,18 +108,16 @@ public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
                 resultText.text = "Correct!";
                 puzzleActive = false;
                 answerInput.interactable = false;
-                answerInput.placeholder.GetComponent<TMP_Text>().text = "Puzzle Completed!";
             }
             else
             {
                 currentAttempt++;
                 if (currentAttempt >= maxAttempts)
                 {
-                    jumpscare.TriggerJumpScare();
+                    jumpscare?.TriggerJumpScare();
                     resultText.text = $"Game Over! Correct Answer: {correctAnswer}";
                     puzzleActive = false;
                     answerInput.interactable = false;
-                    answerInput.placeholder.GetComponent<TMP_Text>().text = "Puzzle Over!";
                 }
                 else
                 {
@@ -182,20 +135,7 @@ public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
         answerInput.ActivateInputField();
     }
 
-    public void OnCalculatorSubmit()
-    {
-        string result = answerInput.text.Trim();
-
-        if (!string.IsNullOrEmpty(result))
-        {
-            answerSheet.SetAnswer(result);
-            answerInput.text = "";  // Optional: clear after submit
-        }
-    }
-
-    public string GetCorrectAnswer()
-    {
-        return correctAnswer.ToString(); // convert int to string
-    }
-
+    public void ResetPuzzle() => GenerateNewProblem();
+    public string GetCorrectAnswer() => correctAnswer.ToString();
+    public int GetMaxAttempts() => maxAttempts;
 }
