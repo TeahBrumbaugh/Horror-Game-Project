@@ -38,7 +38,7 @@ public class WordleManager : MonoBehaviour, IAnswerProvider, IPuzzleResettable
 
         foreach (string line in lines)
         {
-            string word = line.Trim().ToUpper();
+            string word = line.Trim().ToLower();
             if (word.Length == wordLength)
             {
                 words.Add(word);
