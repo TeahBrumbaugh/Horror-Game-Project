@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
+public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider, IPuzzleResettable
 {
     public enum Difficulty
     {
@@ -41,13 +41,14 @@ public class CalculatorPuzzle : MonoBehaviour, IAnswerProvider
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        if (!initialized)
-        {
-            GenerateNewProblem();
-            initialized = true;
-        }
+        GenerateNewProblem();
     }
+
+    public void ResetPuzzle()
+    {
+        GenerateNewProblem(); // Reset numbers, UI, and answer
+    }
+
 
 
     private void GenerateNewProblem()
