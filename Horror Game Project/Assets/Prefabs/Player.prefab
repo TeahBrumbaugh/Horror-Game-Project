@@ -78,8 +78,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6105447017630854802}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -0.01}
+  m_LocalRotation: {x: -0.04759498, y: 0.4581895, z: 0.02457908, w: 0.887239}
+  m_LocalPosition: {x: -0.008107185, y: 2.4989305, z: -0.0057556634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -174,7 +174,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: 0
+    Value: 54.62562
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -184,7 +184,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 0
+    Value: -6.141254
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   PivotOffset: {x: 0, y: 0, z: 0}
   AmplitudeGain: 1
   FrequencyGain: 1
-  m_NoiseOffsets: {x: 0, y: 0, z: 0}
+  m_NoiseOffsets: {x: 321.84503, y: 146.21793, z: 294.5523}
 --- !u!114 &6229693870355677011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
-      InputValue: 0
+      InputValue: -0
       Driver:
         AccelTime: 0
         DecelTime: 0
@@ -414,6 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockToggleActionName: LockToggle
   inputAxisController: {fileID: 6229693870355677011}
+  pauseMenu: {fileID: 0}
 --- !u!1 &7514035689278243778
 GameObject:
   m_ObjectHideFlags: 0
