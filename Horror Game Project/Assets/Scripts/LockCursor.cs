@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
-using Microsoft.Unity.VisualStudio.Editor;
 
 [RequireComponent(typeof(PlayerInput))]
 public class LockCursor : MonoBehaviour
