@@ -5,7 +5,7 @@ public class CameraNoiseSwitcher : MonoBehaviour
 {
     public CinemachineCamera virtualCamera;
     public NoiseSettings newNoiseProfile;
-    [SerializeField] private float TotalTimer = 300f; // Time after which to switch noise profile
+    [SerializeField] private float TriggerTimer = 300f; // Time after which to switch noise profile
 
     private CinemachineBasicMultiChannelPerlin perlin;
 
@@ -24,7 +24,7 @@ public class CameraNoiseSwitcher : MonoBehaviour
 
     void Update()
     {
-        if (perlin != null && Time.time > TotalTimer)
+        if (perlin != null && Time.time > TriggerTimer)
         {
             perlin.NoiseProfile = newNoiseProfile;
         }
