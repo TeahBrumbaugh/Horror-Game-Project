@@ -21,7 +21,7 @@ public class Puzzle3Answer : MonoBehaviour
     private IEnumerator GradeAfterDelay()
     {
         string submitted = inputField.text.Trim();
-        string correct = "1618";
+        string correct = "9942";
 
         Debug.Log($" Grading '{submitted}' after {delay} seconds...");
 
