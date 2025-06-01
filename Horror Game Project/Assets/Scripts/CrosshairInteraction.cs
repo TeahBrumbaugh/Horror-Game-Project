@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;  // new Input System
 public class CrosshairInteraction : MonoBehaviour
 {
     public Image crosshairImage;
+    public Sprite crosshairInteractImage;
+    public Sprite DefaultCrosshair;
     public Color normalColor = Color.white;
     public Color highlightColor = Color.red;
     public float interactDistance = 2f;
