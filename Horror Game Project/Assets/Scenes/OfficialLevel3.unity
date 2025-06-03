@@ -3194,7 +3194,7 @@ MonoBehaviour:
   inputField: {fileID: 1847655160}
   submitButton: {fileID: 1847655162}
   stageManager: {fileID: 772727452}
-  delay: 2
+  delay: 0
 --- !u!114 &772727452
 MonoBehaviour:
   m_ObjectHideFlags: 0

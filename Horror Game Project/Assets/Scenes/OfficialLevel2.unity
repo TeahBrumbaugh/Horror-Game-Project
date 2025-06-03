@@ -4305,7 +4305,7 @@ MonoBehaviour:
   puzzleScript: {fileID: 87875843}
   submitButton: {fileID: 973313995}
   stageManager: {fileID: 1577254323}
-  delay: 2
+  delay: 0
 --- !u!114 &1577254323
 MonoBehaviour:
   m_ObjectHideFlags: 0
