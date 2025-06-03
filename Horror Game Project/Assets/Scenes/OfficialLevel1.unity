@@ -1474,8 +1474,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Question of the day:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3333,7 +3333,7 @@ MonoBehaviour:
   FocusTracking: 0
   FocusTarget: {fileID: 0}
   FocusOffset: 0
-  Profile: {fileID: 11400000, guid: 22f1afb88fed7ad448eb4cba62909854, type: 2}
+  Profile: {fileID: 11400000, guid: fceafc61ece3b874e8a62c449bd6afba, type: 2}
 --- !u!114 &1429157966 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5278842812867195808, guid: 71eb5d4547b1f4d409d3c5ef20e13dc6, type: 3}
@@ -3909,8 +3909,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Don't Forget to Submit on Canvas!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

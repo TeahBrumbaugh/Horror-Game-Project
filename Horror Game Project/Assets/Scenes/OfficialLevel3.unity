@@ -654,6 +654,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 972958478}
+    - target: {fileID: 1833987769496065714, guid: 221544f83bc83714c9c0e4ef7eab3e82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1902556612438844063, guid: 221544f83bc83714c9c0e4ef7eab3e82, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.075
@@ -744,6 +748,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6105447017630854802, guid: 221544f83bc83714c9c0e4ef7eab3e82, type: 3}
       insertIndex: 6
+      addedObject: {fileID: 559928353}
+    - targetCorrespondingSourceObject: {fileID: 6105447017630854802, guid: 221544f83bc83714c9c0e4ef7eab3e82, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 559928352}
   m_SourcePrefab: {fileID: 100100000, guid: 221544f83bc83714c9c0e4ef7eab3e82, type: 3}
 --- !u!1 &288402204 stripped
@@ -1012,8 +1019,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '#1'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2226,6 +2233,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 288402204}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e58dca47b0422a468e609776fc70051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 0}
+  newNoiseProfile: {fileID: 0}
+  TriggerTimer: 300
+--- !u!114 &559928353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288402204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 449ef5ebbe24720439ec31d15f7b6f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -2233,7 +2255,7 @@ MonoBehaviour:
   FocusTracking: 0
   FocusTarget: {fileID: 0}
   FocusOffset: 0
-  Profile: {fileID: 11400000, guid: 22f1afb88fed7ad448eb4cba62909854, type: 2}
+  Profile: {fileID: 11400000, guid: fceafc61ece3b874e8a62c449bd6afba, type: 2}
 --- !u!1001 &639991710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6059,8 +6081,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '#2'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
