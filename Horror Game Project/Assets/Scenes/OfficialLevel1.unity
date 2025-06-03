@@ -3164,6 +3164,7 @@ MonoBehaviour:
   maxAttempts: 3
   animator: {fileID: 733257129}
   audioClip: {fileID: 8300000, guid: baa1000c7cde64feb9bdaf888b20ca86, type: 3}
+  jumpScare: {fileID: 8300000, guid: 091aea15388a1f14db6c4030728f035e, type: 3}
 --- !u!224 &1005569004
 RectTransform:
   m_ObjectHideFlags: 0

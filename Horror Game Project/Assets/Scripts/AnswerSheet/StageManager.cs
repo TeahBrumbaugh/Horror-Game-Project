@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private int maxAttempts = 3;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioClip audioClip;
+    [SerializeField] private AudioClip jumpScare;
     private AudioSource audioSource;
     private void Start()
     {
@@ -55,7 +56,7 @@ public class StageManager : MonoBehaviour
 
     public IEnumerator JumpScareAndRestart()
     {
-
+        SoundManager.instance.PlaySoundEffectClip(jumpScare, transform, 2f, 0, 1);
         jumpScarePanel.SetActive(true);
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("OfficialLevel1");
