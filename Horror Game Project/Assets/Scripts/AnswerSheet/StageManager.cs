@@ -12,6 +12,13 @@ public class StageManager : MonoBehaviour
     private int attemptCount = 0;
     [SerializeField] private int maxAttempts = 3;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip audioClip;
+    private AudioSource audioSource;
+    private void Awake()
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }
 
     public void GoToNextStage()
     {

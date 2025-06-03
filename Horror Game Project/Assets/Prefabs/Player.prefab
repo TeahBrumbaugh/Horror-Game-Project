@@ -393,6 +393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshairImage: {fileID: 0}
+  crosshairInteractImage: {fileID: 0}
+  DefaultCrosshair: {fileID: 0}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 1, g: 0, b: 0, a: 1}
   interactDistance: 2
@@ -604,3 +606,6 @@ MonoBehaviour:
   _gameInput: {fileID: 0}
   _cameraTransform: {fileID: 4470305425116108577}
   _maxSpeed: 3
+  walkSound: {fileID: 8300000, guid: 88c563ba941034ca1b33351ea5048fed, type: 3}
+  walkSound2: {fileID: 8300000, guid: 81b417945d2696f4b82147fa9dcb15ee, type: 3}
+  _stepInterval: 0.8

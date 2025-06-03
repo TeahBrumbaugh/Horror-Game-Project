@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Footstep Sound Settings")]
     [SerializeField] private AudioClip walkSound;
+    [SerializeField] private AudioClip walkSound2;
     [SerializeField] private float _stepInterval = 0.4f;
 
     private Rigidbody _rb;
@@ -39,8 +40,17 @@ public class PlayerMovement : MonoBehaviour
         bool isMoving = (_moveInput.x != 0f || _moveInput.y != 0f);
         if (isMoving && _timeSinceLastStep >= _stepInterval)
         {
-            SoundManager.instance.PlaySoundEffectClip(walkSound, transform, 1f, 0.5f);
-            _timeSinceLastStep = 0f;
+            int choice = Random.Range(0, 2);
+            if (choice == 0)
+            {
+                SoundManager.instance.PlaySoundEffectClip(walkSound, transform, 1f, 0.5f);
+                _timeSinceLastStep = 0f;
+            }
+            else
+            {
+                SoundManager.instance.PlaySoundEffectClip(walkSound2, transform, 1f, 0.5f);
+                _timeSinceLastStep = 0f;
+            }
         }
     }
 
