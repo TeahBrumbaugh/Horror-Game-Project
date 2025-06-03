@@ -1,6 +1,4 @@
 using System.Collections;
-using NUnit.Framework.Constraints;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +9,6 @@ public class StageManager : MonoBehaviour
     private int currentStage = 0;
     private int attemptCount = 0;
     [SerializeField] private int maxAttempts = 3;
-    [SerializeField] private Animator animator;
 
     public void GoToNextStage()
     {
@@ -54,12 +51,4 @@ public class StageManager : MonoBehaviour
 
     public int GetStage() => currentStage;
     public int GetAttemptCount() => attemptCount;
-
-    private IEnumerator FadeInAndOut()
-    {
-        if (animator != null)
-            animator.SetTrigger("Start");
-        yield return new WaitForSeconds(1f);
-
-    }
 }
