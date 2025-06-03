@@ -43,12 +43,12 @@ public class PlayerMovement : MonoBehaviour
             int choice = Random.Range(0, 2);
             if (choice == 0)
             {
-                SoundManager.instance.PlaySoundEffectClip(walkSound, transform, 1f, 0.5f);
+                SoundManager.instance.PlaySoundEffectClip(walkSound, transform, 1f, 0.5f, 0);
                 _timeSinceLastStep = 0f;
             }
             else
             {
-                SoundManager.instance.PlaySoundEffectClip(walkSound2, transform, 1f, 0.5f);
+                SoundManager.instance.PlaySoundEffectClip(walkSound2, transform, 1f, 0.5f, 0);
                 _timeSinceLastStep = 0f;
             }
         }

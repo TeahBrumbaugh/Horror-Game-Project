@@ -2633,6 +2633,7 @@ MonoBehaviour:
   isPaused: 0
   crosshair: {fileID: 1429157966}
   lockCursor: {fileID: 559928351}
+  buttonSound: {fileID: 8300000, guid: 5ffbcf6cfdc6b0c4eae0442af3acfdc1, type: 3}
 --- !u!4 &972958479
 Transform:
   m_ObjectHideFlags: 0
@@ -5307,6 +5308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPanel: {fileID: 1847655161}
   inputField: {fileID: 1847655160}
+  buttonClick: {fileID: 8300000, guid: 5ffbcf6cfdc6b0c4eae0442af3acfdc1, type: 3}
   disableOnOpen:
   - {fileID: 971786945}
   - {fileID: 1429157966}
@@ -6102,6 +6104,7 @@ BoxCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1114315710}
   - {fileID: 974631937}
   - {fileID: 832575519}
   - {fileID: 5397939633657343498}
@@ -6109,7 +6112,6 @@ SceneRoots:
   - {fileID: 288402203}
   - {fileID: 916885351}
   - {fileID: 1847655159}
-  - {fileID: 1114315710}
   - {fileID: 1160182973}
   - {fileID: 1005569004}
   - {fileID: 972958479}

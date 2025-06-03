@@ -22,13 +22,14 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlaySoundEffectClip(AudioClip audioClip, Transform spawnTransform, float volume, float time)
+    public void PlaySoundEffectClip(AudioClip audioClip, Transform spawnTransform, float volume, float time, float startTime)
     {
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
 
         audioSource.clip = audioClip;
 
         audioSource.volume = volume;
+        audioSource.time = startTime;
 
         audioSource.Play();
 
@@ -39,10 +40,5 @@ public class SoundManager : MonoBehaviour
             Destroy(audioSource.gameObject, time);
 
 
-    }
-
-    private IEnumerator ForWalking()
-    {
-        yield return new WaitForSeconds(1f);
     }
 }

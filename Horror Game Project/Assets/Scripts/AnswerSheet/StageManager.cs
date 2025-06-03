@@ -14,9 +14,11 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioClip audioClip;
     private AudioSource audioSource;
-    private void Awake()
+    private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         audioSource.clip = audioClip;
+        audioSource.volume = 0.5f;
         audioSource.Play();
     }
 

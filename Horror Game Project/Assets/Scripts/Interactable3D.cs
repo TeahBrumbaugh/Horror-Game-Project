@@ -8,6 +8,7 @@ public class Interactable3D : MonoBehaviour
     public GameObject uiPanel;
     public TMP_InputField inputField;
     private AnswerSheetToggle answerSheetToggle;
+    [SerializeField] private AudioClip buttonClick;
 
 
     [Tooltip("Components to disable when UI is open")]
@@ -40,6 +41,7 @@ public class Interactable3D : MonoBehaviour
 
     public void OnSubmit()
     {
+        SoundManager.instance.PlaySoundEffectClip(buttonClick, transform, 0.5f, 0, 0.1f);
         string entered = inputField.text;
         Debug.Log($"User entered: {entered}");
 
@@ -57,6 +59,7 @@ public class Interactable3D : MonoBehaviour
 
     public void CloseUI()
     {
+        SoundManager.instance.PlaySoundEffectClip(buttonClick, transform, 0.5f, 0, 0.1f);
         uiPanel.SetActive(false);
         foreach (var mb in disableOnOpen)
             mb.enabled = true;

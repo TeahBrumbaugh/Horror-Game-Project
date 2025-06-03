@@ -1042,6 +1042,10 @@ PrefabInstance:
       value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3686782230879538319, guid: 221544f83bc83714c9c0e4ef7eab3e82, type: 3}
+      propertyPath: walkSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 81b417945d2696f4b82147fa9dcb15ee, type: 3}
+    - target: {fileID: 3686782230879538319, guid: 221544f83bc83714c9c0e4ef7eab3e82, type: 3}
       propertyPath: _stepInterval
       value: 0.8
       objectReference: {fileID: 0}
@@ -3363,6 +3367,7 @@ MonoBehaviour:
   isPaused: 0
   crosshair: {fileID: 1429157966}
   lockCursor: {fileID: 559928351}
+  buttonSound: {fileID: 8300000, guid: 5ffbcf6cfdc6b0c4eae0442af3acfdc1, type: 3}
 --- !u!4 &972958479
 Transform:
   m_ObjectHideFlags: 0
@@ -3378,6 +3383,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &973313995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6896692786585042848, guid: 38cf03aa5accc0a4694d5aa501c958d2, type: 3}
+  m_PrefabInstance: {fileID: 39382792}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974631932
 GameObject:
   m_ObjectHideFlags: 0
@@ -4285,9 +4301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1cd25e5a58bab4a8fc8a537fa5fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 0}
+  inputField: {fileID: 479673740}
   puzzleScript: {fileID: 87875843}
-  submitButton: {fileID: 0}
+  submitButton: {fileID: 973313995}
   stageManager: {fileID: 1577254323}
   delay: 2
 --- !u!114 &1577254323
@@ -5447,6 +5463,10 @@ PrefabInstance:
       propertyPath: inputField
       value: 
       objectReference: {fileID: 479673740}
+    - target: {fileID: 269038315615894852, guid: 70dbc8a53411b65429be20271fc5810a, type: 3}
+      propertyPath: buttonClick
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ffbcf6cfdc6b0c4eae0442af3acfdc1, type: 3}
     - target: {fileID: 269038315615894852, guid: 70dbc8a53411b65429be20271fc5810a, type: 3}
       propertyPath: cameraLockController
       value: 

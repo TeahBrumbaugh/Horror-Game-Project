@@ -606,6 +606,6 @@ MonoBehaviour:
   _gameInput: {fileID: 0}
   _cameraTransform: {fileID: 4470305425116108577}
   _maxSpeed: 3
-  walkSound: {fileID: 8300000, guid: 88c563ba941034ca1b33351ea5048fed, type: 3}
+  walkSound: {fileID: 8300000, guid: 84b29e507a0c1b345b0b201a0f64cc5b, type: 3}
   walkSound2: {fileID: 8300000, guid: 81b417945d2696f4b82147fa9dcb15ee, type: 3}
   _stepInterval: 0.8
