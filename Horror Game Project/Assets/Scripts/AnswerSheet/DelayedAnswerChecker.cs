@@ -10,6 +10,7 @@ public class DelayedAnswerChecker : MonoBehaviour
     [SerializeField] private MonoBehaviour puzzleScript;       // Must implement IAnswerProvider
     [SerializeField] private Button submitButton;
     [SerializeField] private StageManager stageManager;
+    [SerializeField] private GameObject blackoutPanel;
 
     [Header("Settings")]
     [SerializeField] private float delay = 2f;                 // Delay in seconds before checking
@@ -35,12 +36,24 @@ public class DelayedAnswerChecker : MonoBehaviour
 
     private IEnumerator GradeAfterDelay()
     {
+        //  Enable screen blackout
+        if (blackoutPanel != null){
+            blackoutPanel.SetActive(true);
+        }
+
         string submitted = inputField.text.Trim();
         string correct = answerProvider.GetCorrectAnswer().Trim();
 
         Debug.Log($" Grading '{submitted}' after {delay} seconds...");
 
         yield return new WaitForSeconds(delay);
+
+        //  Disable blackout after delay
+        if (blackoutPanel != null)
+        {
+            blackoutPanel.SetActive(false);
+
+        }
 
         if (submitted.Equals(correct, System.StringComparison.OrdinalIgnoreCase))
         {
@@ -51,15 +64,13 @@ public class DelayedAnswerChecker : MonoBehaviour
         {
             Debug.Log($" Incorrect. Expected: '{correct}'");
 
-            // If it's a Wordle puzzle, update tile colors
             if (puzzleScript is WordleManager wordle)
-            {
                 wordle.UpdateCurrentRow(submitted);
-            }
 
             stageManager?.FailAttempt();
         }
 
-        inputField.text = "";  // Optional: reset input
+        inputField.text = "";
     }
+
 }
