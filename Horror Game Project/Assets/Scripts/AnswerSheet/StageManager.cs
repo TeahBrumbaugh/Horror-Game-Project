@@ -1,12 +1,11 @@
 using System.Collections;
 using NUnit.Framework.Constraints;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] private string stageSceneName;  // Fill this in the Inspector
+    [SerializeField] private string stageSceneName;
     [SerializeField] private GameObject jumpScarePanel;
     private int currentStage = 0;
     private int attemptCount = 0;

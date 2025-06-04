@@ -77,6 +77,7 @@ public class LightFlickering : MonoBehaviour
         {
             if (stageManager != null)
             {
+                Debug.LogWarning("HAHAHAHA");
                 StartCoroutine(stageManager.JumpScareAndRestart());
             }
         }
