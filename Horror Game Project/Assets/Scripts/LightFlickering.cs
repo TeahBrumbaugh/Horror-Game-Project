@@ -11,6 +11,7 @@ public class LightFlickering : MonoBehaviour
 
     public float flickerTimer = 0f;
     public float totalTime = 300f; //5 Mins
+    public float scareTime = 300f; //Set this to time for jumpscare and level restart
     public float timer; //Game timer
 
     [SerializeField] private float flickerTimeEnd = 210f;
@@ -71,9 +72,13 @@ public class LightFlickering : MonoBehaviour
                 }
             }
         }
-        else
+        
+        if (timer < scareTime)
         {
-            StartCoroutine(stageManager.JumpScareAndRestart());
+            if (stageManager != null)
+            {
+                StartCoroutine(stageManager.JumpScareAndRestart());
+            }
         }
 
         flickerTimer += Time.deltaTime;

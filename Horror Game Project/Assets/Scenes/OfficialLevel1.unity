@@ -697,6 +697,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &272328371
@@ -1351,6 +1352,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &393965213
@@ -1697,6 +1699,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &693026579
@@ -2276,6 +2279,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &837879715
@@ -2547,12 +2551,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b1409bd7bf0ef44a44021098a0e0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageManager: {fileID: 0}
+  stageManager: {fileID: 1005569003}
   minIntensity: 15
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 60
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &960911513
@@ -4039,6 +4044,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1537973659
@@ -4181,6 +4187,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1587934253
@@ -4588,6 +4595,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1712247512

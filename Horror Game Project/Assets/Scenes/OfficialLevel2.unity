@@ -919,6 +919,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &269713512
@@ -1525,6 +1526,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &375202086
@@ -1988,6 +1990,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &565600661
@@ -2266,6 +2269,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &639463353
@@ -2596,6 +2600,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &704758334
@@ -3737,6 +3742,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1199765002
@@ -4197,6 +4203,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1437246871
@@ -5327,12 +5334,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b1409bd7bf0ef44a44021098a0e0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageManager: {fileID: 0}
+  stageManager: {fileID: 1577254323}
   minIntensity: 15
   maxIntensity: 15
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 120
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1996457919
