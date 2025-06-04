@@ -10,7 +10,7 @@ public class Puzzle3Answer : MonoBehaviour
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button submitButton;
     [SerializeField] private StageManager stageManager;
-    [SerializeField] private GameObject blackoutPanel; //  Add this field
+    [SerializeField] private GameObject blackoutPanel;
 
     [Header("Settings")]
     [SerializeField] private float delay = 2f;
