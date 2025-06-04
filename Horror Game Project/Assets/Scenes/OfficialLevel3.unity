@@ -1375,6 +1375,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &402821403
@@ -1810,6 +1811,147 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4892213229419197274, guid: b3925160123925842a2d2fc84a889ecd, type: 3}
   m_PrefabInstance: {fileID: 457930330}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &459771708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 459771714}
+  - component: {fileID: 459771713}
+  - component: {fileID: 459771712}
+  - component: {fileID: 459771711}
+  - component: {fileID: 459771710}
+  - component: {fileID: 459771709}
+  m_Layer: 6
+  m_Name: BlackScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &459771709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459771708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &459771710
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459771708}
+  m_CullTransparentMesh: 1
+--- !u!114 &459771711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459771708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &459771712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459771708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &459771713
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459771708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &459771714
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459771708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &517264615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +2004,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &517264618
@@ -3216,7 +3359,8 @@ MonoBehaviour:
   inputField: {fileID: 1847655160}
   submitButton: {fileID: 1847655162}
   stageManager: {fileID: 772727452}
-  delay: 0
+  blackoutPanel: {fileID: 459771708}
+  delay: 3
 --- !u!114 &772727452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4075,6 +4219,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &934991508
@@ -4705,6 +4850,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1055569369
@@ -5133,6 +5279,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1136217119
@@ -7472,6 +7619,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1910691731
@@ -8349,6 +8497,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &1994053783
@@ -8612,6 +8761,7 @@ MonoBehaviour:
   timeBetweenIntensity: 100
   flickerTimer: 0
   totalTime: 300
+  scareTime: 300
   timer: 0
   flickerTimeEnd: 210
 --- !u!114 &2037243645
@@ -9369,15 +9519,13 @@ SceneRoots:
   - {fileID: 1107863282}
   - {fileID: 288402203}
   - {fileID: 916885351}
-  - {fileID: 1847655159}
-  - {fileID: 1114315710}
+  - {fileID: 679775962}
+  - {fileID: 1926209503}
+  - {fileID: 772727453}
   - {fileID: 972958479}
   - {fileID: 299371709}
   - {fileID: 830812573}
   - {fileID: 538261931}
-  - {fileID: 679775962}
-  - {fileID: 1926209503}
-  - {fileID: 772727453}
   - {fileID: 410332004}
   - {fileID: 330318172}
   - {fileID: 652058861}
@@ -9386,4 +9534,7 @@ SceneRoots:
   - {fileID: 875405976}
   - {fileID: 1279876923}
   - {fileID: 1085942592}
+  - {fileID: 1114315710}
+  - {fileID: 1847655159}
+  - {fileID: 459771714}
   - {fileID: 1092738509}
